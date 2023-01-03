@@ -1,0 +1,183 @@
+* {
+    margin: 0;
+    font-family: "Consolas", sans-serif;
+    color: green;
+    font-size: 3vh;
+    word-wrap: break-word;
+    box-sizing: content-box;
+}
+
+@keyframes cursor-blink {
+    0% {
+        opacity: 0;
+    }
+}
+
+@keyframes content-display-update{
+    0% {
+        display: none;
+        grid-template-columns: "0px 100%";
+    }
+
+    100% {
+        display: block;
+        grid-template-columns: "1fr 25%";
+    }
+}
+
+.cursor-blink::after {
+    content: "_";
+    animation: cursor-blink 1.5s steps(2) infinite;
+}
+
+:root {
+    --background: #000;
+    --primary: #4b4a4a8c;
+    --secondary: #ff8800;
+    --font-color: #008000;
+}
+
+body {
+    background-color: var(--background);
+    height: 100vh;
+    display: grid;
+    grid-template-areas: 
+    "header header"
+    "main aside"
+    "footer footer";
+
+    grid-template-rows: 10vh 75vh 15vh;
+    /*grid-template-columns: 1fr 25%;*/
+    grid-template-columns: 0px 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+header {
+    background-color: var(--primary);
+    padding: 10px 8px;
+    grid-area: header;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+main {
+    grid-area: main;
+    padding-top: 40px;
+}
+
+aside {
+    grid-area: aside;
+}
+
+footer {
+    background-color: var(--primary);
+    grid-area: footer;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+button.selected{
+    border-radius: 10%;
+    border-left: 2px solid var(--font-color);
+    border-right: 2px solid var(--font-color);
+}
+
+button:hover {
+    border-radius: 10%;
+    border-left: 2px solid var(--secondary);
+    border-right: 2px solid var(--secondary);
+}
+
+button::after {
+    display: block;
+    content: "";
+    border-bottom: 2px solid var(--secondary);
+    transform: scaleX(0);
+}
+
+button:hover::after{
+    transform: scaleX(1);
+    transition: transform .25s;
+}
+
+#nav-title {
+    font-weight: bold;
+}
+
+#contact {
+    margin: 0px 10px;
+}
+
+.bottom-margin {
+    margin-bottom: 10px;
+}
+
+.container {
+    display: inline;
+}
+
+#content-title {
+    font-size: 25px;
+    font-weight: bold;
+    width: auto;
+    margin: 0px 25%;
+    text-align: center;
+}
+
+#content {
+    width: auto;
+    height: 80%;
+    margin: 0px 15%;
+    padding: 5px;
+    font-size: small;
+}
+
+.menu {
+    padding: 5px 2px;
+    background-color: var(--primary);
+    border: solid 1px var(--primary);
+    border-radius: 10px;
+    width: 50%;
+    height: 60%;
+    margin: auto;
+    position: relative;
+    top: 10%;
+    text-align: center;
+}
+
+address {
+    text-align: center;
+    position: relative;
+    top: 10%
+}
+
+.img-redirect {
+    width: 30px;
+    height: 30px;
+    margin: 10px 10px;
+}
+
+#content-container {
+    margin: 0px 15%;
+    background-color: var(--primary);
+    border: solid 1px var(--primary);
+    border-radius: 10px;
+    display: none;
+    height: 65%;
+    overflow-y: auto;
+}
+
+.content-open {
+    grid-template-columns: 1fr 25%;
+}
+
+.content-close {
+    grid-template-columns: 0px 100%;
+}
